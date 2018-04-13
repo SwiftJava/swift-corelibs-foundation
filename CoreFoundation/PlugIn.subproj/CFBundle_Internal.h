@@ -31,7 +31,7 @@ CF_EXTERN_C_BEGIN
 #endif
 
 // FHS bundles are supported on the Swift and C runtimes, except on Windows.
-#if !DEPLOYMENT_RUNTIME_OBJC && !DEPLOYMENT_TARGET_WINDOWS
+#if !DEPLOYMENT_RUNTIME_OBJC && !DEPLOYMENT_TARGET_WINDOWS && !DEPLOYMENT_TARGET_ANDROID
 
 #if DEPLOYMENT_TARGET_LINUX || DEPLOYMENT_TARGET_FREEBSD
     #define _CFBundleFHSSharedLibraryFilenamePrefix CFSTR("lib")
@@ -77,7 +77,7 @@ struct __CFBundle {
     
     CFURLRef _url;
     
-#if !DEPLOYMENT_RUNTIME_OBJC && !DEPLOYMENT_TARGET_WINDOWS
+#if !DEPLOYMENT_RUNTIME_OBJC && !DEPLOYMENT_TARGET_WINDOWS && !DEPLOYMENT_TARGET_ANDROID
     Boolean _isFHSInstalledBundle;
 #endif
     

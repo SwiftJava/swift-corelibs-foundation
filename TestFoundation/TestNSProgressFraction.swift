@@ -7,16 +7,13 @@
 // See http://swift.org/CONTRIBUTORS.txt for the list of Swift project authors
 //
 
-#if DEPLOYMENT_RUNTIME_OBJC || os(Linux)
-import Foundation
-import XCTest
-#else
-import SwiftFoundation
-import SwiftXCTest
-#endif
-
 #if !DARWIN_COMPATIBILITY_TESTS
 class TestProgressFraction : XCTestCase {
+#if os(Android)
+    static var allTests: [(String, (TestProgressFraction) -> () throws -> Void)] {
+        return []
+    }
+#else
     static var allTests: [(String, (TestProgressFraction) -> () throws -> Void)] {
         return [
             ("test_equal", test_equal ),
@@ -159,6 +156,7 @@ class TestProgressFraction : XCTestCase {
         let r = f1 + f2
         XCTAssertFalse(r.overflowed)
     }
+#endif
 }
 #endif
 
